@@ -78,7 +78,5 @@ A funcionalidade de **Gestão de Produtos** está implementada para demonstrar o
 5.  A lista é exibida no `produtos.jsp`.
 6.  O botão "Adicionar Produto de Teste" permite persistir novos dados no banco H2 em memória, demonstrando a escrita no banco de dados.
 
-O uso do **jQuery** é demonstrado no arquivo `static/js/app.js`, que adiciona uma mensagem de rodapé na página inicial após o carregamento do DOM.
-
 ---
-*Este projeto foi criado por Manus AI para fins de demonstração de portfólio.*
+

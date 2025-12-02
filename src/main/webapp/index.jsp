@@ -14,8 +14,8 @@
         <nav>
             <ul>
                 <li><a href="produtos.do?action=listar">Gestão de Produtos (Struts + Spring + Hibernate)</a></li>
-                <li><a href="estoque.do">Gestão de Estoque (A implementar)</a></li>
-                <li><a href="vendas.do">Gestão de Vendas (A implementar)</a></li>
+                <li><a href="estoque.do">Gestão de Estoque (Struts + Spring + Hibernate)</a></li>
+                <li><a href="vendas.do">Gestão de Vendas (Struts + Spring + Hibernate)</a></li>
             </ul>
         </nav>
 
