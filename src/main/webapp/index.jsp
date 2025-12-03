@@ -3,19 +3,19 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>ERP Sistema Híbrido</title>
+    <title>ERP</title>
     <link rel="stylesheet" type="text/css" href="static/css/style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Bem-vindo ao ERP Sistema Híbrido</h1>
-        <p>Este sistema demonstra a integração de Struts 1.x, Spring e Hibernate.</p>
+        <h1>Bem-vindo ao ERP</h1>
+        <p>Este sistema ajuda na gestão das empresas.</p>
 
         <nav>
             <ul>
-                <li><a href="produtos.do?action=listar">Gestão de Produtos (Struts + Spring + Hibernate)</a></li>
-                <li><a href="estoque.do">Gestão de Estoque (Struts + Spring + Hibernate)</a></li>
-                <li><a href="vendas.do">Gestão de Vendas (Struts + Spring + Hibernate)</a></li>
+                <li><a href="produtos.do?action=listar">Gestão de Produtos</a></li>
+                <li><a href="estoque.do">Gestão de Estoque</a></li>
+                <li><a href="vendas.do">Gestão de Vendas</a></li>
             </ul>
         </nav>
 
