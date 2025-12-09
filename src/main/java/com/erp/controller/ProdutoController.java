@@ -1,6 +1,8 @@
 package com.erp.controller;
 
+import com.erp.model.Estoque;
 import com.erp.model.Produto;
+import com.erp.service.EstoqueService;
 import com.erp.service.ProdutoService;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -18,8 +20,9 @@ public class ProdutoController extends BaseAction {
                                  HttpServletRequest request, HttpServletResponse response)
             throws Exception {
 
-        // Obtém o serviço do Spring Context
+        // Obtém os serviços do Spring Context
         ProdutoService produtoService = (ProdutoService) getBean(getServlet().getServletContext(), "produtoService");
+        EstoqueService estoqueService = (EstoqueService) getBean(getServlet().getServletContext(), "estoqueService");
 
         String action = request.getParameter("action");
 
@@ -35,6 +38,12 @@ public class ProdutoController extends BaseAction {
             novoProduto.setPreco(100.00);
             novoProduto.setQuantidadeEstoque(50);
             produtoService.salvar(novoProduto);
+
+            // Cria um registro de estoque para o novo produto
+            Estoque estoque = new Estoque();
+            estoque.setProduto(novoProduto);
+            estoque.setQuantidade(50);
+            estoqueService.salvar(estoque);
 
             // Após salvar, redireciona para a listagem
             return mapping.findForward("listarProdutosRedirect");

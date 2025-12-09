@@ -6,41 +6,53 @@
 <head>
     <meta charset="UTF-8">
     <title>Gestão de Produtos</title>
-    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
 </head>
 <body>
     <div class="container">
         <h1>Gestão de Produtos</h1>
-        <p><a href="../index.jsp">Voltar para o Início</a></p>
+        <nav>
+            <ul>
+                <li><a href="index.jsp">Menu Principal</a></li>
+                <li><a href="produtos.do?action=listar">Produtos</a></li>
+                <li><a href="estoque.do">Estoque</a></li>
+                <li><a href="vendas.do">Vendas</a></li>
+            </ul>
+        </nav>
 
         <h2>Lista de Produtos</h2>
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Preço</th>
-                    <th>Estoque</th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach var="produto" items="${requestScope.produtos}">
+        <c:if test="${empty requestScope.produtos}">
+            <p>Nenhum produto encontrado.</p>
+        </c:if>
+        <c:if test="${not empty requestScope.produtos}">
+            <table>
+                <thead>
                     <tr>
-                        <td><c:out value="${produto.id}"/></td>
-                        <td><c:out value="${produto.nome}"/></td>
-                        <td>R$ <c:out value="${produto.preco}"/></td>
-                        <td><c:out value="${produto.quantidadeEstoque}"/></td>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Preço</th>
+                        <th>Quantidade em Estoque</th>
                     </tr>
-                </c:forEach>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <c:forEach var="produto" items="${requestScope.produtos}">
+                        <tr>
+                            <td><c:out value="${produto.id}"/></td>
+                            <td><c:out value="${produto.nome}"/></td>
+                            <td>R$ <c:out value="${produto.preco}"/></td>
+                            <td><c:out value="${produto.quantidadeEstoque}"/></td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+        </c:if>
 
-        <h2>Adicionar Produto (Exemplo Simples)</h2>
+        <h2>Adicionar Novo Produto</h2>
         <html:form action="/produtos.do?action=salvar" method="post">
             <html:submit value="Adicionar Produto de Teste"/>
         </html:form>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../static/js/app.js"></script>
+    <script src="static/js/app.js"></script>
 </body>
 </html>

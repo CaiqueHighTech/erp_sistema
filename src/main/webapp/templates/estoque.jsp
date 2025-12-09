@@ -8,20 +8,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Gestão de Estoque</title>
-    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
 </head>
 <body>
     <div class="container">
         <h1>Gestão de Estoque</h1>
+        <nav>
+            <ul>
+                <li><a href="index.jsp">Menu Principal</a></li>
+                <li><a href="produtos.do?action=listar">Produtos</a></li>
+                <li><a href="estoque.do">Estoque</a></li>
+                <li><a href="vendas.do">Vendas</a></li>
+            </ul>
+        </nav>
         
         <logic:present name="erro">
-            <div class="erro">
+            <div class="jquery-message" style="display: block; border: 1px solid #f5c6cb; background-color: #f8d7da; color: #721c24;">
                 <strong>Erro:</strong> <bean:write name="erro"/>
             </div>
         </logic:present>
 
+        <h2>Lista de Estoque</h2>
         <logic:present name="estoques">
-            <table border="1" cellpadding="5" cellspacing="0">
+            <table>
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -49,9 +58,8 @@
         <logic:notPresent name="estoques">
             <p>Nenhum estoque encontrado.</p>
         </logic:notPresent>
-
-        <br/>
-        <a href="../index.jsp">Voltar ao Menu Principal</a>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="static/js/app.js"></script>
 </body>
 </html>
