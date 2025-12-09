@@ -35,7 +35,8 @@
                     <tr>
                         <th>ID</th>
                         <th>Produto</th>
-                        <th>Quantidade</th>
+                        <th>Preço</th>
+                        <th>Quantidade em Estoque</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -44,6 +45,7 @@
                         <tr>
                             <td><bean:write name="estoque" property="id"/></td>
                             <td><bean:write name="estoque" property="produto.nome"/></td>
+                            <td>R$ <bean:write name="estoque" property="produto.preco"/></td>
                             <td><bean:write name="estoque" property="quantidade"/></td>
                             <td>
                                 <a href="#">Editar</a> | 

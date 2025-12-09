@@ -2,6 +2,7 @@ package com.erp.repository;
 
 import com.erp.model.Estoque;
 import org.springframework.stereotype.Repository;
+import java.util.List;
 
 /**
  * Repositório específico para a entidade Estoque.
@@ -12,4 +13,15 @@ import org.springframework.stereotype.Repository;
 public class EstoqueRepository extends GenericDAO<Estoque, Long> {
 
     // Métodos específicos para Estoque podem ser adicionados aqui, se necessário.
+    
+    public Estoque findByProdutoId(Long produtoId) {
+        List<Estoque> estoques = findAll();
+        for (Estoque estoque : estoques) {
+            if (estoque.getProduto() != null && estoque.getProduto().getId().equals(produtoId)) {
+                return estoque;
+            }
+        }
+        return null;
+    }
 }
+

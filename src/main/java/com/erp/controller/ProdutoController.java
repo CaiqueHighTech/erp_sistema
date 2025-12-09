@@ -31,22 +31,36 @@ public class ProdutoController extends BaseAction {
             request.setAttribute("produtos", produtos);
             return mapping.findForward("listarProdutos");
         } else if ("salvar".equals(action)) {
-            // Aqui, o ActionForm seria usado para obter os dados do formulário
-            // Para simplificar, vamos criar um produto de exemplo
-            Produto novoProduto = new Produto();
-            novoProduto.setNome("Produto Teste");
-            novoProduto.setPreco(100.00);
-            novoProduto.setQuantidadeEstoque(50);
-            produtoService.salvar(novoProduto);
+            // Obtém os dados do formulário
+            String nome = request.getParameter("nome");
+            String precoStr = request.getParameter("preco");
+            String quantidadeStr = request.getParameter("quantidadeEstoque");
+            
+            try {
+                Double preco = Double.parseDouble(precoStr);
+                Integer quantidade = Integer.parseInt(quantidadeStr);
+                
+                // Cria e salva o novo produto
+                Produto novoProduto = new Produto();
+                novoProduto.setNome(nome);
+                novoProduto.setPreco(preco);
+                novoProduto.setQuantidadeEstoque(quantidade);
+                produtoService.salvar(novoProduto);
 
-            // Cria um registro de estoque para o novo produto
-            Estoque estoque = new Estoque();
-            estoque.setProduto(novoProduto);
-            estoque.setQuantidade(50);
-            estoqueService.salvar(estoque);
+                // Cria um registro de estoque para o novo produto
+                Estoque estoque = new Estoque();
+                estoque.setProduto(novoProduto);
+                estoque.setQuantidade(quantidade);
+                estoqueService.salvar(estoque);
 
-            // Após salvar, redireciona para a listagem
-            return mapping.findForward("listarProdutosRedirect");
+                // Após salvar, redireciona para a listagem
+                return mapping.findForward("listarProdutosRedirect");
+            } catch (NumberFormatException e) {
+                request.setAttribute("erro", "Erro ao converter valores numéricos. Verifique os dados inseridos.");
+                List<Produto> produtos = produtoService.listarTodos();
+                request.setAttribute("produtos", produtos);
+                return mapping.findForward("listarProdutos");
+            }
         }
 
         return mapping.findForward("erro");

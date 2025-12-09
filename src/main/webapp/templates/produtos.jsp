@@ -49,7 +49,19 @@
 
         <h2>Adicionar Novo Produto</h2>
         <html:form action="/produtos.do?action=salvar" method="post">
-            <html:submit value="Adicionar Produto de Teste"/>
+            <div class="form-group">
+                <label for="nome">Nome do Produto:</label>
+                <input type="text" id="nome" name="nome" required/>
+            </div>
+            <div class="form-group">
+                <label for="preco">Preço:</label>
+                <input type="number" id="preco" name="preco" step="0.01" required/>
+            </div>
+            <div class="form-group">
+                <label for="quantidadeEstoque">Quantidade em Estoque:</label>
+                <input type="number" id="quantidadeEstoque" name="quantidadeEstoque" required/>
+            </div>
+            <html:submit value="Adicionar Produto"/>
         </html:form>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

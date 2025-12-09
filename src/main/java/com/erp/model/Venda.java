@@ -22,6 +22,7 @@ public class Venda {
     private Produto produto;
 
     private Integer quantidadeVendida;
+    private Double valorUnitario;
     private Double valorTotal;
     private Date dataVenda;
 
@@ -53,6 +54,14 @@ public class Venda {
 
     public void setQuantidadeVendida(Integer quantidadeVendida) {
         this.quantidadeVendida = quantidadeVendida;
+    }
+
+    public Double getValorUnitario() {
+        return valorUnitario;
+    }
+
+    public void setValorUnitario(Double valorUnitario) {
+        this.valorUnitario = valorUnitario;
     }
 
     public Double getValorTotal() {
