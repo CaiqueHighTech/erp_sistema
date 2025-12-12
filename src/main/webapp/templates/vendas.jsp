@@ -21,7 +21,6 @@
                 <li><a href="index.jsp">Menu Principal</a></li>
                 <li><a href="produtos.do?action=listar">Produtos</a></li>
                 <li><a href="estoque.do">Estoque</a></li>
-                <li><a href="vendas.do">Vendas</a></li>
             </ul>
         </nav>
 
@@ -88,7 +87,6 @@
                             <th>Valor Unitário</th>
                             <th>Valor Total</th>
                             <th>Data da Venda</th>
-                            <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -105,10 +103,6 @@
                                 </td>
                                 <td>
                                     <fmt:formatDate value="${venda.dataVenda}" pattern="dd/MM/yyyy HH:mm"/>
-                                </td>
-                                <td>
-                                    <a href="#">Editar</a> | 
-                                    <a href="#">Deletar</a>
                                 </td>
                             </tr>
                         </logic:iterate>

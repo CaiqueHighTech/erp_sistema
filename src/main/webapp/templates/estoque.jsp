@@ -17,7 +17,6 @@
             <ul>
                 <li><a href="index.jsp">Menu Principal</a></li>
                 <li><a href="produtos.do?action=listar">Produtos</a></li>
-                <li><a href="estoque.do">Estoque</a></li>
                 <li><a href="vendas.do">Vendas</a></li>
             </ul>
         </nav>
@@ -37,7 +36,6 @@
                         <th>Produto</th>
                         <th>Preço</th>
                         <th>Quantidade em Estoque</th>
-                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -47,10 +45,6 @@
                             <td><bean:write name="estoque" property="produto.nome"/></td>
                             <td>R$ <bean:write name="estoque" property="produto.preco"/></td>
                             <td><bean:write name="estoque" property="quantidade"/></td>
-                            <td>
-                                <a href="#">Editar</a> | 
-                                <a href="#">Deletar</a>
-                            </td>
                         </tr>
                     </logic:iterate>
                 </tbody>

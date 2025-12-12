@@ -14,7 +14,6 @@
         <nav>
             <ul>
                 <li><a href="index.jsp">Menu Principal</a></li>
-                <li><a href="produtos.do?action=listar">Produtos</a></li>
                 <li><a href="estoque.do">Estoque</a></li>
                 <li><a href="vendas.do">Vendas</a></li>
             </ul>

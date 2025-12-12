@@ -77,6 +77,13 @@ public class VendaService {
         produtoRepository.save(produto);
         
         // Salva a venda
-        return vendaRepository.save(venda);
+        Venda vendaSalva = vendaRepository.save(venda);
+        
+        // Deleta o estoque se a quantidade chegou a zero
+        if (estoque.getQuantidade() <= 0) {
+            estoqueRepository.delete(estoque);
+        }
+        
+        return vendaSalva;
     }
 }

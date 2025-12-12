@@ -27,4 +27,14 @@ public class EstoqueService {
     public void excluir(Estoque estoque) {
         estoqueRepository.delete(estoque);
     }
+
+    /**
+     * Deleta o estoque automaticamente quando a quantidade chega a zero
+     * @param estoque - Estoque a ser verificado e potencialmente deletado
+     */
+    public void deletarSeQuantidadeZero(Estoque estoque) {
+        if (estoque != null && (estoque.getQuantidade() == null || estoque.getQuantidade() <= 0)) {
+            estoqueRepository.delete(estoque);
+        }
+    }
 }
