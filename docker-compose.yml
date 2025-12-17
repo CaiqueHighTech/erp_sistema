@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - JAVA_OPTS=-Xmx1024m -Xms512m
+      - DB_URL=jdbc:h2:mem:erp_db
+      - DB_DRIVER=org.h2.Driver
+      - DB_USER=sa
+      - DB_PASSWORD=
+    depends_on:
+      - database
+    networks:
+      - erp-network
+    restart: unless-stopped
+
+  database:
+    image: mysql:8.0
+    container_name: erp-db
+    environment:
+      MYSQL_DATABASE: erp_db
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_USER: erp_user
+      MYSQL_PASSWORD: erp_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+    networks:
+      - erp-network
+    restart: unless-stopped
+
+volumes:
+  mysql-data:
+
+networks:
+  erp-network:
+    driver: bridge
