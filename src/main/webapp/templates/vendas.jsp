@@ -87,6 +87,7 @@
                             <th>Valor Unitário</th>
                             <th>Valor Total</th>
                             <th>Data da Venda</th>
+                            <th>Hora da Venda</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -102,7 +103,10 @@
                                     R$ <fmt:formatNumber value="${venda.valorTotal}" type="currency" currencyCode="BRL" maxFractionDigits="2"/>
                                 </td>
                                 <td>
-                                    <fmt:formatDate value="${venda.dataVenda}" pattern="dd/MM/yyyy HH:mm"/>
+                                    <c:out value="${venda.dataVendaFormatada}"/>
+                                </td>
+                                <td>
+                                    <c:out value="${venda.horaVenda}"/>
                                 </td>
                             </tr>
                         </logic:iterate>

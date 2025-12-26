@@ -9,6 +9,9 @@ CREATE TABLE IF NOT EXISTS produto (
     preco DECIMAL(10, 2) NOT NULL,
     sku VARCHAR(100) UNIQUE NOT NULL,
     ativo BOOLEAN DEFAULT TRUE,
+    quantidadeEstoque INT DEFAULT 0,
+    dataAdicao VARCHAR(10),
+    horaAdicao VARCHAR(8),
     data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     data_atualizacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
@@ -33,6 +36,8 @@ CREATE TABLE IF NOT EXISTS venda (
     preco_unitario DECIMAL(10, 2) NOT NULL,
     total DECIMAL(12, 2) NOT NULL,
     cliente_nome VARCHAR(255) NOT NULL,
+    dataVendaFormatada VARCHAR(10),
+    horaVenda VARCHAR(8),
     data_venda TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     status VARCHAR(50) DEFAULT 'PENDENTE',
     FOREIGN KEY (produto_id) REFERENCES produto(id) ON DELETE RESTRICT

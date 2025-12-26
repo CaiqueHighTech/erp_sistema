@@ -10,6 +10,9 @@ import org.apache.struts.action.ActionMapping;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.ZoneId;
 
 /**
  * Controller (Action) do Struts para gerenciar operações de Produto.
@@ -40,11 +43,20 @@ public class ProdutoController extends BaseAction {
                 Double preco = Double.parseDouble(precoStr);
                 Integer quantidade = Integer.parseInt(quantidadeStr);
                 
+                // Obtém data e hora atual em Brasília
+                LocalDateTime agora = LocalDateTime.now(ZoneId.of("America/Sao_Paulo"));
+                DateTimeFormatter dataFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                DateTimeFormatter horaFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+                String dataAdicao = agora.format(dataFormatter);
+                String horaAdicao = agora.format(horaFormatter);
+                
                 // Cria e salva o novo produto
                 Produto novoProduto = new Produto();
                 novoProduto.setNome(nome);
                 novoProduto.setPreco(preco);
                 novoProduto.setQuantidadeEstoque(quantidade);
+                novoProduto.setDataAdicao(dataAdicao);
+                novoProduto.setHoraAdicao(horaAdicao);
                 produtoService.salvar(novoProduto);
 
                 // Cria um registro de estoque para o novo produto

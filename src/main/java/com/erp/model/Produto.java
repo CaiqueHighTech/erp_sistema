@@ -16,6 +16,8 @@ public class Produto {
     private String nome;
     private Double preco;
     private Integer quantidadeEstoque;
+    private String dataAdicao;
+    private String horaAdicao;
 
     // Construtor padrão
     public Produto() {
@@ -52,5 +54,21 @@ public class Produto {
 
     public void setQuantidadeEstoque(Integer quantidadeEstoque) {
         this.quantidadeEstoque = quantidadeEstoque;
+    }
+
+    public String getDataAdicao() {
+        return dataAdicao;
+    }
+
+    public void setDataAdicao(String dataAdicao) {
+        this.dataAdicao = dataAdicao;
+    }
+
+    public String getHoraAdicao() {
+        return horaAdicao;
+    }
+
+    public void setHoraAdicao(String horaAdicao) {
+        this.horaAdicao = horaAdicao;
     }
 }

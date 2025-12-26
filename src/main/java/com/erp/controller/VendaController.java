@@ -13,6 +13,9 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.ZoneId;
 
 public class VendaController extends BaseAction {
     
@@ -40,6 +43,13 @@ public class VendaController extends BaseAction {
                     Double valorUnitario = Double.parseDouble(valorUnitarioStr);
                     Integer quantidade = Integer.parseInt(quantidadeStr);
                     
+                    // Obtém data e hora atual em Brasília
+                    LocalDateTime agora = LocalDateTime.now(ZoneId.of("America/Sao_Paulo"));
+                    DateTimeFormatter dataFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                    DateTimeFormatter horaFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+                    String dataVendaFormatada = agora.format(dataFormatter);
+                    String horaVenda = agora.format(horaFormatter);
+                    
                     // Busca o produto
                     Produto produto = produtoService.buscarPorId(produtoId);
                     if (produto == null) {
@@ -51,6 +61,8 @@ public class VendaController extends BaseAction {
                         venda.setValorUnitario(valorUnitario);
                         venda.setQuantidadeVendida(quantidade);
                         venda.setValorTotal(valorUnitario * quantidade);
+                        venda.setDataVendaFormatada(dataVendaFormatada);
+                        venda.setHoraVenda(horaVenda);
                         
                         // Registra a venda (validando estoque)
                         vendaService.registrarVenda(venda);

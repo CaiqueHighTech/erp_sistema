@@ -31,6 +31,8 @@
                         <th>Nome</th>
                         <th>Preço</th>
                         <th>Quantidade em Estoque</th>
+                        <th>Data de Adição</th>
+                        <th>Hora de Adição</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -40,6 +42,8 @@
                             <td><c:out value="${produto.nome}"/></td>
                             <td>R$ <c:out value="${produto.preco}"/></td>
                             <td><c:out value="${produto.quantidadeEstoque}"/></td>
+                            <td><c:out value="${produto.dataAdicao}"/></td>
+                            <td><c:out value="${produto.horaAdicao}"/></td>
                         </tr>
                     </c:forEach>
                 </tbody>

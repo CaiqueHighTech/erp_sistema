@@ -25,6 +25,8 @@ public class Venda {
     private Double valorUnitario;
     private Double valorTotal;
     private Date dataVenda;
+    private String dataVendaFormatada;
+    private String horaVenda;
 
     // Construtor padrão
     public Venda() {
@@ -78,5 +80,21 @@ public class Venda {
 
     public void setDataVenda(Date dataVenda) {
         this.dataVenda = dataVenda;
+    }
+
+    public String getDataVendaFormatada() {
+        return dataVendaFormatada;
+    }
+
+    public void setDataVendaFormatada(String dataVendaFormatada) {
+        this.dataVendaFormatada = dataVendaFormatada;
+    }
+
+    public String getHoraVenda() {
+        return horaVenda;
+    }
+
+    public void setHoraVenda(String horaVenda) {
+        this.horaVenda = horaVenda;
     }
 }
